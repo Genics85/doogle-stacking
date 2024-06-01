@@ -1,13 +1,19 @@
 import { NavLink } from "react-router-dom";
 import nav_logo from "./assets/doogle_nav_logo.png";
 import eth_logo from "./assets/eth_logo.svg";
+import bars from "./assets/bars.svg";
 import eth_simp_logo from "./assets/eth_simple_logo.svg";
+import { useState } from "react";
+
+const unstake_percentages: number[] = [10, 25, 50, 75, 100];
 
 function App() {
+  const [stake, setStake] = useState<boolean>(true);
+
   return (
-    <main className=" text-white min-h-screen bg-[#030600]">
-      <nav className="relative text-[18px] px-4 py-2 w-full border-b-[1px] border-b-[#031502] ">
-        <div className=" flex px-4 items-center justify-between 2xl:justify-center  2xl:gap-32">
+    <main className=" text-white min-h-screen bg-[#030600] pb-10 space-y-12">
+      <nav className="z-10 relative text-[18px] px-4 py-2 w-full border-b-[1px] border-b-[#031502] ">
+        <div className=" flex px-4 items-center justify-between 2xl:justify-center  2xl:gap-36">
           <div className="logo flex items-center gap-2">
             <div className="size-[60px] rounded-full bg-[#A0968A] flex justify-center">
               <img className="h-[53px] " src={nav_logo} alt="" />
@@ -43,17 +49,21 @@ function App() {
           </div>
         </div>
       </nav>
-      <section className="w-full">
-        <div className="container mx-auto p-4 flex justify-center items-center gap-30">
-          <div className="flex flex-col lg:w-[50%]">
+      <section className=" z-10 w-full">
+        <div className="container relative mx-auto p-4 flex justify-center items-center gap-30">
+          <div className="absolute -z-0">
+            <img src={bars} alt="" />
+          </div>
+          <div className="z-10 flex flex-col lg:w-[50%]">
             <h3 className="text-[46px] font-bold ">Earn with Doogle Inu</h3>
             <p className="lg:w-[80%]">
-              <span className="text-[#cafc01]">$Doogle</span> is a dog meme
-              coin. As Dooglers, you get to experience a world where humans and
-              dogs become completely one. Transform into one with your dog
+              <span className="text-[#cafc01] text-[20px]">$Doogle</span> is a
+              dog meme coin. As Dooglers, you get to experience a world where
+              humans and dogs become completely one. Transform into one with
+              your dog
             </p>
           </div>
-          <div className="rounded-lg p-6 flex flex-col gap-8 box-gradient w-[400px]">
+          <div className="z-10 rounded-lg p-6 flex flex-col gap-8 box-gradient w-[400px]">
             <div className="flex justify-between items-center">
               <p className="font-bold">Doogle Inu</p>
               <div className="size-[60px] rounded-full bg-[#A0968A] flex justify-center">
@@ -73,15 +83,25 @@ function App() {
           </div>
         </div>
       </section>
-      <section className="w-full lg:w-[80%] mx-auto">
-        <div className="container rounded-xl mx-auto flex flex-col gap-5 box-gradient p-6">
-          <div className="flex rounded-full px-2 py-1">
-            <div>
-              <p>Stake</p>
-            </div>
-            <div>
-              <p>Unstake</p>
-            </div>
+      <section className=" w-full lg:w-[80%] mx-auto">
+        <div className="container rounded-xl mx-auto flex flex-col items-center gap-10 box-gradient p-4">
+          <div className="z-10 flex box-gradient w-fit gap-5 rounded-full px-2 py-1">
+            <button
+              onClick={() => setStake(true)}
+              className={`${
+                stake ? "bg-[#f06e10]" : ""
+              } w-[90px] py-1 rounded-full `}
+            >
+              <p className="text-center">Stake</p>
+            </button>
+            <button
+              onClick={() => setStake(false)}
+              className={`${
+                !stake ? "bg-[#f06e10]" : ""
+              } w-[90px] py-1 rounded-full `}
+            >
+              <p className="text-center">Unstake</p>
+            </button>
           </div>
           {/* Stake */}
           <div className="flex gap-7 items-center justify-center">
@@ -112,8 +132,32 @@ function App() {
                     <p className="text-[20px] font-bold">40%</p>
                   </div>
                 </div>
-                <div className="z-10 rounded-xl bg-black p-3 flex flex-col gap-2">
-                  <div className="w-full relative">
+
+                <div className="z-10 rounded-xl bg-black p-3 flex flex-col gap-4">
+                  {/* unstake percentages */}
+                  <div
+                    className={`${!stake ? "flex" : "hidden"} flex-col gap-2`}
+                  >
+                    <p className="text-[#868491]">
+                      please select one of the percentage buttons, you wish to
+                      unstack token.
+                    </p>
+                    <div className="flex justify-between gap-5">
+                      {unstake_percentages.map((percent, i) => {
+                        return (
+                          <button
+                            className="rounded-md bg-grad-circle w-full"
+                            key={i}
+                          >
+                            <p className="text-center">{percent}%</p>
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
+
+                  {/* Stake amount input */}
+                  <div className={`${stake ? "" : "hidden"} w-full relative`}>
                     <input
                       className="bg-black rounded-lg outline-none border border-[#302923] pl-24 p-2 w-full"
                       type="text"
@@ -135,7 +179,9 @@ function App() {
               </div>
             </div>
             {/* Stake receipt */}
-            <div className="bg-grad-circle overflow-hidden w-[400px] rounded-2xl p-[1px]">
+            <div className="bg-grad-circle relative overflow-hidden w-[400px] rounded-2xl p-[1px]">
+              <div className=" z-0 absolute opacity-20 -top-10 size-[600px]  left-1/2 -translate-x-1/2  blur-md radial-light"></div>
+
               <div className="bg-black w-full p-4 rounded-2xl gap-3 flex flex-col">
                 <div className="flex justify-between">
                   <p className="text-[#868491]">You Wil Receive</p>
