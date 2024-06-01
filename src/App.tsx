@@ -13,7 +13,7 @@ function App() {
   return (
     <main className=" text-white min-h-screen bg-[#030600] pb-10 space-y-12">
       <nav className="z-10 relative text-[18px] px-4 py-2 w-full border-b-[1px] border-b-[#031502] ">
-        <div className=" flex px-4 items-center justify-between 2xl:justify-center  2xl:gap-36">
+        <div className=" flex flex-col lg:flex-row gap-2 px-4 items-center justify-between 2xl:justify-center  2xl:gap-36">
           <div className="logo flex items-center gap-2">
             <div className="size-[60px] rounded-full bg-[#A0968A] flex justify-center">
               <img className="h-[53px] " src={nav_logo} alt="" />
@@ -50,12 +50,12 @@ function App() {
         </div>
       </nav>
       <section className=" z-10 w-full">
-        <div className="container relative mx-auto p-4 flex justify-center items-center gap-30">
-          <div className="absolute -z-0">
+        <div className="container relative mx-auto p-4 flex space-y-4 flex-col-reverse lg:flex-row justify-center items-center gap-30">
+          <div className="absolute -z-0 hidden lg:block">
             <img src={bars} alt="" />
           </div>
           <div className="z-10 flex flex-col lg:w-[50%]">
-            <h3 className="text-[46px] font-bold ">Earn with Doogle Inu</h3>
+            <h3 className="text-[36px] lg:text-[46px] font-bold ">Earn with Doogle Inu</h3>
             <p className="lg:w-[80%]">
               <span className="text-[#cafc01] text-[20px]">$Doogle</span> is a
               dog meme coin. As Dooglers, you get to experience a world where
@@ -63,9 +63,9 @@ function App() {
               your dog
             </p>
           </div>
-          <div className="z-10 rounded-lg p-6 flex flex-col gap-8 box-gradient w-[400px]">
+          <div className="z-10 rounded-lg p-6 flex flex-col gap-8 box-gradient w-full lg:w-[400px]">
             <div className="flex justify-between items-center">
-              <p className="font-bold">Doogle Inu</p>
+              <p className="font-bold text-[20px]">Doogle Inu</p>
               <div className="size-[60px] rounded-full bg-[#A0968A] flex justify-center">
                 <img className="h-[53px] " src={nav_logo} alt="" />
               </div>
@@ -83,8 +83,8 @@ function App() {
           </div>
         </div>
       </section>
-      <section className=" w-full lg:w-[80%] mx-auto">
-        <div className="container rounded-xl mx-auto flex flex-col items-center gap-10 box-gradient p-4">
+      <section className=" w-full p-2 lg:w-[80%] mx-auto">
+        <div className="container rounded-xl mx-auto flex flex-col items-center gap-10 box-gradient p-3">
           <div className="z-10 flex box-gradient w-fit gap-5 rounded-full px-2 py-1">
             <button
               onClick={() => setStake(true)}
@@ -104,10 +104,10 @@ function App() {
             </button>
           </div>
           {/* Stake */}
-          <div className="flex gap-7 items-center justify-center">
+          <div className="flex flex-col lg:flex-row gap-7 items-center justify-center">
             {/* Stake Amount */}
-            <div className="bg-grad-circle overflow-hidden w-[400px] rounded-2xl p-[1px]">
-              <div className="p-5 relative rounded-2xl flex flex-col bg-black gap-4">
+            <div className="bg-grad-circle overflow-hidden lg:w-[400px] rounded-2xl p-[1px]">
+              <div className="p-3 relative rounded-2xl flex flex-col bg-black gap-4">
                 <div className=" z-0 absolute opacity-20 -top-10 size-[600px]  left-1/2 -translate-x-1/2  blur-md radial-light"></div>
 
                 <div className="flex border-b-[1px] border-b-[#cafc01] justify-between pb-3 items-center">
@@ -171,15 +171,15 @@ function App() {
                     </div>
                   </div>
                   <div className="flex gap-4">
-                    <button className="button">Stake</button>
-                    <button className="button">Restake</button>
+                    <button className="button">Stack</button>
+                    <button className="button">Restack</button>
                   </div>
                   <button className="button">Claim</button>
                 </div>
               </div>
             </div>
             {/* Stake receipt */}
-            <div className="bg-grad-circle relative overflow-hidden w-[400px] rounded-2xl p-[1px]">
+            <div className="bg-grad-circle relative overflow-hidden w-full lg:w-[400px] rounded-2xl p-[1px]">
               <div className=" z-0 absolute opacity-20 -top-10 size-[600px]  left-1/2 -translate-x-1/2  blur-md radial-light"></div>
 
               <div className="bg-black w-full p-4 rounded-2xl gap-3 flex flex-col">
