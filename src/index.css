@@ -1,0 +1,38 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.button {
+  @apply rounded-lg w-full py-2 bg-[#f06e10];
+}
+
+.bg-grad-circle {
+  background: linear-gradient(
+    79.66deg,
+    rgba(97, 207, 52, 0.85) 1.22%,
+    #9cbb45 49.59%,
+    #d5e609 99.17%
+  );
+}
+
+.radial-light{
+  background-image: radial-gradient(
+    closest-side,
+    #cafb02,
+    transparent
+  );
+}
+
+.box-gradient {
+  background: linear-gradient(180deg, #031502 51%, #043d03 100%);
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+.red {
+  border: red 2px solid;
+}
