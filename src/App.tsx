@@ -4,8 +4,11 @@ import eth_logo from "./assets/eth_logo.svg";
 import bars from "./assets/bars.svg";
 import eth_simp_logo from "./assets/eth_simple_logo.svg";
 import { useState } from "react";
+import walletAddressTruncate from "./util/walletAddressTruncate";
 
 const unstake_percentages: number[] = [10, 25, 50, 75, 100];
+const dummyWalletAddress: string =
+  "0xabcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef";
 
 function App() {
   const [stake, setStake] = useState<boolean>(true);
@@ -43,7 +46,9 @@ function App() {
               <p>0.98ETH</p>
             </div>
             <div className="flex rounded-full bg-[#1a1f2e] px-2 py-1 items-center gap-4">
-              <p className="text-[16px]">0xNeffdh.....xkx</p>
+              <p className="text-[16px]">
+                {walletAddressTruncate(dummyWalletAddress)}
+              </p>
               <div className="size-6 rounded-full bg-grad-circle"></div>
             </div>
           </div>
@@ -55,7 +60,9 @@ function App() {
             <img src={bars} alt="" />
           </div>
           <div className="z-10 flex flex-col lg:w-[50%]">
-            <h3 className="text-[36px] lg:text-[46px] font-bold ">Earn with Doogle Inu</h3>
+            <h3 className="text-[36px] lg:text-[46px] font-bold ">
+              Earn with Doogle Inu
+            </h3>
             <p className="lg:w-[80%]">
               <span className="text-[#cafc01] text-[20px]">$Doogle</span> is a
               dog meme coin. As Dooglers, you get to experience a world where
@@ -117,7 +124,7 @@ function App() {
                   </div>
                   <div className=" z-10 flex rounded-full bg-[#030600] px-2 py-1 items-center gap-4">
                     <p className="text-[16px] text-[#d1cdcd]">
-                      0xNeffdh.....xkx
+                      {walletAddressTruncate(dummyWalletAddress)}
                     </p>
                     <div className="size-6 rounded-full bg-grad-circle"></div>
                   </div>
