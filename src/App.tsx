@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 import nav_logo from "./assets/doogle_nav_logo.png";
 import eth_logo from "./assets/eth_logo.svg";
 import bars from "./assets/bars.svg";
+import doogle_hero_logo from "./assets/doogle_hero_img.png";
 import eth_simp_logo from "./assets/eth_simple_logo.svg";
 import { useState } from "react";
 import walletAddressTruncate from "./util/walletAddressTruncate";
@@ -19,7 +20,7 @@ function App() {
         <div className=" flex flex-col lg:flex-row gap-2 px-4 items-center justify-between 2xl:justify-center  2xl:gap-36">
           <div className="logo flex items-center gap-2">
             <div className="size-[60px] rounded-full bg-[#A0968A] flex justify-center">
-              <img className="h-[53px] " src={nav_logo} alt="" />
+              <img className="h-[53px] " src={doogle_hero_logo} alt="" />
             </div>
             <p className="text-[24px] font-bold text-nowrap 2xl:text-[28px]">
               DOOGLE INU
@@ -74,7 +75,7 @@ function App() {
             <div className="flex justify-between items-center">
               <p className="font-bold text-[20px]">Doogle Inu</p>
               <div className="size-[60px] rounded-full bg-[#A0968A] flex justify-center">
-                <img className="h-[53px] " src={nav_logo} alt="" />
+                <img className="h-[53px] " src={doogle_hero_logo} alt="" />
               </div>
             </div>
             <div className="flex justify-between items-center">
