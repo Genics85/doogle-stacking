@@ -1,4 +1,3 @@
-import { NavLink } from "react-router-dom";
 import eth_logo from "./assets/eth_logo.svg";
 import bars from "./assets/bars.svg";
 import doogle_hero_logo from "./assets/doogle_hero_img.png";
@@ -12,11 +11,15 @@ const dummyWalletAddress: string =
 
 function App() {
   const [stake, setStake] = useState<boolean>(true);
+  const [max, setMax] = useState<boolean>(false);
+  const [unstackPercentage, setUnstackPercentage] = useState<number | null>(
+    null
+  );
 
   return (
     <main className=" text-white min-h-screen bg-[#030600] pb-10 space-y-12">
       <nav className="z-10 relative text-[18px] px-4 py-2 w-full border-b-[1px] border-b-[#031502] ">
-        <div className=" flex flex-col lg:flex-row gap-2 px-4 items-center justify-between 2xl:justify-center  2xl:gap-36">
+        <div className=" flex flex-col lg:flex-row gap-2 px-4 items-center justify-between 2xl:justify-center  2xl:gap-[600px]">
           <div className="logo flex items-center gap-2">
             <div className="size-[60px] rounded-full bg-[#A0968A] flex justify-center">
               <img className="h-[53px] " src={doogle_hero_logo} alt="" />
@@ -25,20 +28,7 @@ function App() {
               DOOGLE INU
             </p>
           </div>
-          <ul className=" gap-4 hidden lg:flex font-bold">
-            <NavLink
-              className={({ isActive }) => (isActive ? "text-[#cafc01]" : "")}
-              to="home"
-            >
-              Staking
-            </NavLink>
-            <NavLink
-              className={({ isActive }) => (isActive ? "text-[#cafc01]" : "")}
-              to="doogle-swap"
-            >
-              Wallets
-            </NavLink>
-          </ul>
+
           {/* Account Details */}
           <div className=" flex gap-10">
             <div className="flex gap-2 items-center">
@@ -153,7 +143,12 @@ function App() {
                       {unstake_percentages.map((percent, i) => {
                         return (
                           <button
-                            className="rounded-md bg-grad-circle w-full"
+                          onClick={()=>setUnstackPercentage(percent)}
+                            className={`${
+                              percent == unstackPercentage
+                                ? "bg-grad-circle"
+                                : "bg-[#6b4a33]"
+                            } rounded-md w-full`}
                             key={i}
                           >
                             <p className="text-center">{percent}%</p>
@@ -169,17 +164,29 @@ function App() {
                       className="bg-black rounded-lg outline-none border border-[#302923] pl-24 p-2 w-full"
                       type="text"
                     />
-                    <div className="rounded-md bg-grad-circle px-1 absolute right-2 top-1/2 -translate-y-1/2">
+                    <button
+                      onClick={() => setMax(!max)}
+                      className={`rounded-md  ${
+                        max ? "bg-grad-circle" : "bg-[#f06e10]"
+                      } px-1 absolute right-2 top-1/2 -translate-y-1/2`}
+                    >
                       Max
-                    </div>
+                    </button>
                     <div className="flex gap-1 absolute left-2 top-1/2 -translate-y-1/2">
                       <img src={eth_simp_logo} alt="" />
                       <p>Amount</p>
                     </div>
                   </div>
                   <div className="flex gap-4">
-                    <button className="button">Stack</button>
-                    <button className="button">Restack</button>
+                    <button className={`${!stake ? "hidden" : ""} button`}>
+                      Stack
+                    </button>
+                    <button className={`${!stake ? "hidden" : ""} button`}>
+                      Restack
+                    </button>
+                    <button className={`${stake ? "hidden" : ""} button`}>
+                      Unstack
+                    </button>
                   </div>
                   <button className="button">Claim</button>
                 </div>
