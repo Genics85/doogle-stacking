@@ -1,5 +1,4 @@
 import { NavLink } from "react-router-dom";
-import nav_logo from "./assets/doogle_nav_logo.png";
 import eth_logo from "./assets/eth_logo.svg";
 import bars from "./assets/bars.svg";
 import doogle_hero_logo from "./assets/doogle_hero_img.png";
